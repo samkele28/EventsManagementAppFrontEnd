@@ -12,7 +12,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login In"
+        android:text="Login"
         android:id="@+id/loginButton"
         android:layout_below="@+id/password"
         android:layout_alignParentLeft="true"
@@ -23,7 +23,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textUsername"
+        android:inputType=""
         android:ems="10"
         android:id="@+id/username"
         android:layout_below="@+id/usernameLabel"

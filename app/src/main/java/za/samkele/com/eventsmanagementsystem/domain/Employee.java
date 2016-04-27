@@ -12,6 +12,10 @@ public class Employee implements Serializable{
     private String lastName;
     private String employeeNumber;
 
+    public void setEmpId(Long empId){
+        this.empId = empId;
+    }
+
     public Long getEmpId(){
         return empId;
     }
