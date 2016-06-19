@@ -8,13 +8,35 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
+        android:name=".config.util.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ActivateActivity"></activity>
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ActivateActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".EventDetailsActivity" />
+        <activity android:name=".CustomerDetailsActivity" />
+        <activity android:name=".EmployeeDetailsActivity" />
+
+        <service
+            android:name=".services.settings.Implimentation.ActivateIntentService"
+            android:exported="false" />
+        <service
+            android:name=".services.settings.Implimentation.ActivateServiceImpl"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.settings.Implimentation.ActivateStubService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

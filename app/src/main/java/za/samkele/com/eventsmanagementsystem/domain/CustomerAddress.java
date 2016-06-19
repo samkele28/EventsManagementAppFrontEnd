@@ -10,4 +10,32 @@ public class CustomerAddress {
     private String town;
     private String postalCode;
     private String province;
+
+    private CustomerAddress(){
+
+    }
+
+    public Long getCustAddrId() {
+        return custAddrId;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public String getSurburb() {
+        return surburb;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public String getProvince() {
+        return province;
+    }
 }

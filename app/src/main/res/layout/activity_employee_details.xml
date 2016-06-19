@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/llLayoutHolder"
+    tools:context=".CustomerDetailsActivity">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llTopSection"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_orange_light">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Employee Details"
+                    android:id="@+id/tvHeading"
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="#080808" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.6">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Back"
+                        android:id="@+id/bPreviousActivity"
+                        android:textColor="#080808" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Next"
+                        android:id="@+id/bNextActivity"
+                        android:textColor="#080808" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Home"
+                        android:id="@+id/bHomeScreen"
+                        android:textColor="#080808" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llMidSection"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:stretchColumns="2">
+
+                    <TableRow>
+                        <TextView
+                            android:layout_column="1"
+                            android:text="Employee Number"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:padding="10dip" />
+
+                        <EditText
+                            android:layout_column="2"
+                            android:inputType="text"
+                            android:id="@+id/etEmpNumber"
+                            android:padding="10dip"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_column="1"
+                            android:text="Employee Name"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:padding="10dip" />
+
+                        <EditText
+                            android:layout_column="2"
+                            android:inputType="text"
+                            android:id="@+id/etEmpName"
+                            android:gravity="right"
+                            android:padding="10dip"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_column="1"
+                            android:text="Employee Last Name"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:padding="10dip" />
+
+                        <EditText
+                            android:layout_column="2"
+                            android:inputType="text"
+                            android:id="@+id/etEmpLastName"
+                            android:gravity="right"
+                            android:padding="10dip"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_column="1"
+                            android:text="Contact No."
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:padding="10dip" />
+
+                        <EditText
+                            android:layout_column="2"
+                            android:inputType="text"
+                            android:id="@+id/etContactNo"
+                            android:gravity="right"
+                            android:padding="10dip"/>
+                    </TableRow>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </TableLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llBottomSection"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_orange_light"
+                android:layout_gravity="top" >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="25dp">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:id="@+id/button"
+                        android:textColor="#080808" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update"
+                        android:id="@+id/button2"
+                        android:textColor="#080808" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delete"
+                        android:id="@+id/button3"
+                        android:textColor="#080808" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View"
+                        android:id="@+id/button4"
+                        android:textColor="#080808" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

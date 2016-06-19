@@ -11,7 +11,7 @@ import android.util.Log;
 import java.util.HashSet;
 import java.util.Set;
 
-import za.samkele.com.eventsmanagementsystem.config.DBConnClass;
+import za.samkele.com.eventsmanagementsystem.config.databases.DBConnClass;
 import za.samkele.com.eventsmanagementsystem.domain.Event;
 import za.samkele.com.eventsmanagementsystem.repository.domain.EventRepository;
 
@@ -198,5 +198,13 @@ public class EventRepositoryImpl extends SQLiteOpenHelper implements EventReposi
                 COLUMN_ID + " =? ",
                 new String[]{String.valueOf(entity.getEventId())});
         return entity;
+    }
+
+    @Override
+    public int deleteAll() {
+        open();
+        int rowsDeleted = db.delete(TABLE_EVENT,null,null);
+        close();
+        return rowsDeleted;
     }
 }

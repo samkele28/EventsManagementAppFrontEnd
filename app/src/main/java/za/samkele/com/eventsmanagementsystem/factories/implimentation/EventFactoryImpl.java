@@ -22,12 +22,12 @@ public class EventFactoryImpl implements EventFactory{
     }
 
     public Event createEvent(String name, String description, Date date){
-        Event employee = new Event
+        Event event = new Event
                 .Builder()
                 .eventName(name)
                 .eventDescription(description)
                 .startDate(date)
                 .build();
-        return employee;
+        return event;
     }
 }

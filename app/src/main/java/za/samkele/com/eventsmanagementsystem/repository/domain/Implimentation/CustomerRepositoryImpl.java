@@ -11,7 +11,7 @@ import android.util.Log;
 import java.util.HashSet;
 import java.util.Set;
 
-import za.samkele.com.eventsmanagementsystem.config.DBConnClass;
+import za.samkele.com.eventsmanagementsystem.config.databases.DBConnClass;
 import za.samkele.com.eventsmanagementsystem.domain.Customer;
 //import za.samkele.com.eventsmanagementsystem.domain.settings.Settings;
 import za.samkele.com.eventsmanagementsystem.repository.domain.CustomerRepository;
@@ -19,7 +19,7 @@ import za.samkele.com.eventsmanagementsystem.repository.domain.CustomerRepositor
 /**
  * Created by Samkele on 4/26/2016.
  */
-public class CustomerRepositoryImpl extends SQLiteOpenHelper implements CustomerRepository {
+public class  CustomerRepositoryImpl extends SQLiteOpenHelper implements CustomerRepository {
     public static final String TABLE_CUSTOMER = "customer";
     private SQLiteDatabase db;
 
@@ -120,6 +120,14 @@ public class CustomerRepositoryImpl extends SQLiteOpenHelper implements Customer
                 COLUMN_ID + " =? ",
                 new String[]{String.valueOf(entity.getCustId())});
         return entity;
+    }
+
+    @Override
+    public int deleteAll() {
+        open();
+        int rowsDeleted = db.delete(TABLE_CUSTOMER,null,null);
+        close();
+        return rowsDeleted;
     }
 
     @Override

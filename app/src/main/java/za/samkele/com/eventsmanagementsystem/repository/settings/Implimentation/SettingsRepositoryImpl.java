@@ -11,7 +11,7 @@ import android.util.Log;
 import java.util.HashSet;
 import java.util.Set;
 
-import za.samkele.com.eventsmanagementsystem.config.DBConnClass;
+import za.samkele.com.eventsmanagementsystem.config.databases.DBConnClass;
 import za.samkele.com.eventsmanagementsystem.domain.settings.Settings;
 import za.samkele.com.eventsmanagementsystem.repository.settings.SettingsRepository;
 
@@ -141,6 +141,14 @@ public class SettingsRepositoryImpl extends SQLiteOpenHelper implements Settings
         }
 
         return settings;
+    }
+
+    @Override
+    public int deleteAll() {
+        open();
+        int rowsDeleted = db.delete(TABLE_SETTINGS,null,null);
+        close();
+        return rowsDeleted;
     }
 
     @Override

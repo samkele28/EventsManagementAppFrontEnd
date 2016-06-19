@@ -1,4 +1,4 @@
-package za.samkele.com.eventsmanagementsystem.config;
+package za.samkele.com.eventsmanagementsystem.config.databases;
 
 /**
  * Created by Samkele on 4/24/2016.

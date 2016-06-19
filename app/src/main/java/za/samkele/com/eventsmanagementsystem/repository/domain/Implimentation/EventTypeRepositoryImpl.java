@@ -1,47 +1,45 @@
 package za.samkele.com.eventsmanagementsystem.repository.domain.Implimentation;
 
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.SQLException;
-import android.content.Context;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import za.samkele.com.eventsmanagementsystem.config.databases.DBConnClass;
-import za.samkele.com.eventsmanagementsystem.domain.Employee;
-import za.samkele.com.eventsmanagementsystem.repository.domain.EmployeeRepository;
+import za.samkele.com.eventsmanagementsystem.domain.EventType;
+import za.samkele.com.eventsmanagementsystem.repository.domain.EventTypeRepository;
 
 /**
- * Created by Samkele on 4/26/2016.
+ * Created by Samkele on 5/14/2016.
  */
-public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements EmployeeRepository{
-    public static final String TABLE_EMPLOYEE = "employee";
+public class EventTypeRepositoryImpl extends SQLiteOpenHelper implements EventTypeRepository {
+    public static final String TABLE_EVENT_TYPE = "event_type";
     private SQLiteDatabase db;
 
     public static final String COLUMN_ID = "id";
-    public static final String COLUMN_FNAME = "firstName";
-    public static final String COLUMN_LNAME = "lastName";
-    public static final String COLUMN_EMPNUMBER = "employeeNumber";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_STATUS = "description";
 
     // Database creation sql statement
-    private static final String CREATE_EMPLOYEE_TABLE = "CREATE TABLE "
-            + TABLE_EMPLOYEE + "("
+    private static final String CREATE_EVENT_TYPE_TABLE = "CREATE TABLE "
+            + TABLE_EVENT_TYPE + "("
             + COLUMN_ID + "INTEGER PRIMARY KEY,"
-            + COLUMN_FNAME + "TEXT,"
-            + COLUMN_LNAME + "TEXT, "
-            + COLUMN_EMPNUMBER + "TEXT" + ")";
+            + COLUMN_NAME + "TEXT,"
+            + COLUMN_STATUS + "TEXT" + ")";
 
-    public EmployeeRepositoryImpl(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
+    public EventTypeRepositoryImpl(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
         super(context, DBConnClass.DATABASE_NAME, factory, DBConnClass.DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        db.execSQL(CREATE_EMPLOYEE_TABLE);
+        db.execSQL(CREATE_EVENT_TYPE_TABLE);
     }
 
     @Override
@@ -49,7 +47,7 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
         Log.w(this.getClass().getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EMPLOYEE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENT_TYPE);
         onCreate(db);
     }
 
@@ -62,54 +60,52 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
     }
 
     @Override
-    public Employee save(Employee entity) {
+    public EventType save(EventType entity) {
         open();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, entity.getEmpId());
-        values.put(COLUMN_FNAME, entity.getFirstName());
-        values.put(COLUMN_LNAME, entity.getLastName());
-        values.put(COLUMN_EMPNUMBER, entity.getEmployeeNumber());
-        long id = db.insertOrThrow(TABLE_EMPLOYEE, null, values);
-        Employee insertedEntity = new Employee.Builder()
+        values.put(COLUMN_ID, entity.getEventTypeId());
+        values.put(COLUMN_NAME, entity.getEventTypeName());
+        values.put(COLUMN_STATUS, entity.getStatus());
+        long id = db.insertOrThrow(TABLE_EVENT_TYPE, null, values);
+        EventType insertedEntity = new EventType.Builder()
                 .copy(entity)
-                .empId(new Long(id))
+                .eventTypeId(new Long(id))
                 .build();
         return insertedEntity;
     }
 
     @Override
-    public Set<Employee> findAll() {
+    public Set<EventType> findAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        String selectAll = " SELECT * FROM " + TABLE_EMPLOYEE;
-        Set<Employee> employees = new HashSet<>();
+        String selectAll = " SELECT * FROM " + TABLE_EVENT_TYPE;
+        Set<EventType> eventsType = new HashSet<>();
         open();
         Cursor cursor = db.rawQuery(selectAll, null);
         if (cursor.moveToFirst()) {
             do {
-                final Employee emp = new Employee.Builder()
-                        .empId(cursor.getLong(0))
-                        .firstName(cursor.getString(1))
-                        .lastName(cursor.getString(2))
-                        .employeeNumber(cursor.getString(3))
+                final EventType eventType = new EventType.Builder()
+                        .eventTypeId(cursor.getLong(0))
+                        .eventTypeName(cursor.getString(1))
+                        .status(cursor.getString(2))
+                        //.startDate(cursor.getString(3))
                         .build();
-                employees.add(emp);
+                eventsType.add(eventType);
             } while (cursor.moveToNext());
         }
 
-        return employees;
+        return eventsType;
     }
 
     @Override
-    public Employee findById(Long id) {
+    public EventType findById(Long id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
-                TABLE_EMPLOYEE,
+                TABLE_EVENT_TYPE,
                 new String[]{
                         COLUMN_ID,
-                        COLUMN_FNAME,
-                        COLUMN_LNAME,
-                        COLUMN_EMPNUMBER},
+                        COLUMN_NAME,
+                        COLUMN_STATUS},
                 COLUMN_ID + " =? ",
                 new String[]{String.valueOf(id)},
                 null,
@@ -117,32 +113,30 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            final Employee employee = new Employee.Builder()
-                    .empId(cursor.getLong(0))
-                    .firstName(cursor.getString(1))
-                    .lastName(cursor.getString(2))
-                    .employeeNumber(cursor.getString(3))
+            final EventType eventType = new EventType.Builder()
+                    .eventTypeId(cursor.getLong(0))
+                    .eventTypeName(cursor.getString(1))
+                    .status(cursor.getString(2))
                     .build();
 
-            return employee;
+            return eventType;
         } else {
             return null;
         }
     }
 
     @Override
-    public Employee update(Employee entity) {
+    public EventType update(EventType entity) {
         open();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, entity.getEmpId());
-        values.put(COLUMN_FNAME, entity.getFirstName());
-        values.put(COLUMN_LNAME, entity.getLastName());
-        values.put(COLUMN_EMPNUMBER, entity.getEmployeeNumber());
+        values.put(COLUMN_ID, entity.getEventTypeId());
+        values.put(COLUMN_NAME, entity.getEventTypeName());
+        values.put(COLUMN_STATUS, entity.getStatus());
         db.update(
-                TABLE_EMPLOYEE,
+                TABLE_EVENT_TYPE,
                 values,
                 COLUMN_ID + " =? ",
-                new String[]{String.valueOf(entity.getEmpId())}
+                new String[]{String.valueOf(entity.getEventTypeId())}
         );
         return entity;
     }
@@ -170,19 +164,19 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
     }*/
 
     @Override
-    public Employee delete(Employee entity) {
+    public EventType delete(EventType entity) {
         open();
         db.delete(
-                TABLE_EMPLOYEE,
+                TABLE_EVENT_TYPE,
                 COLUMN_ID + " =? ",
-                new String[]{String.valueOf(entity.getEmpId())});
+                new String[]{String.valueOf(entity.getEventTypeId())});
         return entity;
     }
 
     @Override
     public int deleteAll() {
         open();
-        int rowsDeleted = db.delete(TABLE_EMPLOYEE,null,null);
+        int rowsDeleted = db.delete(TABLE_EVENT_TYPE,null,null);
         close();
         return rowsDeleted;
     }
