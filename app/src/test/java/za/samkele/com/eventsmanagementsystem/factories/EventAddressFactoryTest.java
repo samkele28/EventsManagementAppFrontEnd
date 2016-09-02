@@ -1,17 +1,18 @@
-package za.samkele.com.eventsmanagementsystem.factories;
+/*package za.samkele.com.eventsmanagementsystem.factories;
 
 import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import za.samkele.com.eventsmanagementsystem.config.util.DomainState;
 import za.samkele.com.eventsmanagementsystem.domain.EventAddress;
 import za.samkele.com.eventsmanagementsystem.factories.implimentation.EventAddressFactoryImpl;
 
 /**
  * Created by Samkele on 6/19/2016.
  */
-public class EventAddressFactoryTest {
+/*public class EventAddressFactoryTest {
     private EventAddressFactoryImpl eventAddressFactory;
 
     @Before
@@ -38,6 +39,6 @@ public class EventAddressFactoryTest {
                 .build();
 
         Assert.assertEquals(updateEventAddress.getStreetAddress(), "334 Acacia Street");
-        //Assert.assertEquals(DomainState.ACTIVE.name(),updateEventAddress.getStatus());
+        //Assert.assertEquals(DomainState.ACTIVE.name(),updateEventAddress.getStatus);
     }
-}
+}*/

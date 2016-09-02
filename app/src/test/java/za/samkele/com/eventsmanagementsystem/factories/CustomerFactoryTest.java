@@ -26,18 +26,18 @@ public class CustomerFactoryTest {
     public void testCustomerCreate() throws Exception {
         Customer customer = custFactory.createCustomer("Woolworths Pty Ltd", "Best", "0832784460");
         Assert.assertEquals(customer.getCustomerName(), "Woolworths Pty Ltd");
-        /*Assert.assertEquals(customer.getContactLastName(), "Best");
+        Assert.assertEquals(customer.getContactLastName(), "Best");
         Assert.assertEquals(customer.getContactNumber(), "0832784460");
-        Assert.assertNotNull(customer.getCustId());*/
+        Assert.assertNotNull(customer.getCustId());
     }
 
     @Test
     public void testCustomerUpdate() throws Exception {
         Customer customer = custFactory.createCustomer("Woolworths Pty Ltd", "Best", "0832784460");
-        /*Assert.assertEquals(customer.getCustomerName(), "Woolworths Pty Ltd");
+        Assert.assertEquals(customer.getCustomerName(), "Woolworths Pty Ltd");
         Assert.assertEquals(customer.getContactLastName(), "Best");
         Assert.assertEquals(customer.getContactNumber(), "0832784460");
-        Assert.assertNotNull(customer.getCustId());*/
+        Assert.assertNotNull(customer.getCustId());
 
         //Update
 
@@ -47,8 +47,8 @@ public class CustomerFactoryTest {
                 .build();
 
         Assert.assertEquals(updateCustomer.getCustomerName(), "Woolworths (Pty) Ltd");
-        /*Assert.assertEquals(customer.getContactLastName(), updateCustomer.getContactLastName());
+        Assert.assertEquals(customer.getContactLastName(), updateCustomer.getContactLastName());
         Assert.assertEquals(customer.getContactNumber(), updateCustomer.getContactNumber());
-        Assert.assertEquals(customer.getCustId(), updateCustomer.getCustId());*/
+        Assert.assertEquals(customer.getCustId(), updateCustomer.getCustId());
     }
 }

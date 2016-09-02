@@ -6,8 +6,7 @@ import za.samkele.com.eventsmanagementsystem.factories.EventAddressFactory;
 /**
  * Created by Samkele on 4/22/2016.
  */
-public class EventAddressFactoryImpl implements EventAddressFactory {
-
+/*public class EventAddressFactoryImpl implements EventAddressFactory {
     private static EventAddressFactoryImpl eventAddressFactory = null;
 
     private EventAddressFactoryImpl(){
@@ -29,4 +28,4 @@ public class EventAddressFactoryImpl implements EventAddressFactory {
                 .build();
         return eventAddress;
     }
-}
+}*/

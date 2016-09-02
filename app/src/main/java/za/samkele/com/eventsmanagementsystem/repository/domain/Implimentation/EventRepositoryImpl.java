@@ -84,7 +84,7 @@ public class EventRepositoryImpl extends SQLiteOpenHelper implements EventReposi
         long id = db.insertOrThrow(TABLE_EVENT, null, values);
         Event insertedEntity = new Event.Builder()
                 .copy(entity)
-                .eventId(new Long(id))
+                .id(new Long(id))
                 .build();
         return insertedEntity;
     }
@@ -99,7 +99,7 @@ public class EventRepositoryImpl extends SQLiteOpenHelper implements EventReposi
         if (cursor.moveToFirst()) {
             do {
                 final Event event = new Event.Builder()
-                        .eventId(cursor.getLong(0))
+                        .eventId(cursor.getString(0))
                         .eventName(cursor.getString(1))
                         .eventDescription(cursor.getString(2))
                         //.startDate(cursor.getString(3))
@@ -135,7 +135,7 @@ public class EventRepositoryImpl extends SQLiteOpenHelper implements EventReposi
                 null);
         if (cursor.moveToFirst()) {
             final Event event = new Event.Builder()
-                    .eventId(cursor.getLong(0))
+                    .eventId(cursor.getString(0))
                     .eventName(cursor.getString(1))
                     .eventDescription(cursor.getString(2))
                     //.startDate(cursor.getString(3))
@@ -163,7 +163,7 @@ public class EventRepositoryImpl extends SQLiteOpenHelper implements EventReposi
                 TABLE_EVENT,
                 values,
                 COLUMN_ID + " =? ",
-                new String[]{String.valueOf(entity.getEventId())}
+                new String[]{String.valueOf(entity.getId())}
         );
         return entity;
     }
@@ -196,7 +196,7 @@ public class EventRepositoryImpl extends SQLiteOpenHelper implements EventReposi
         db.delete(
                 TABLE_EVENT,
                 COLUMN_ID + " =? ",
-                new String[]{String.valueOf(entity.getEventId())});
+                new String[]{String.valueOf(entity.getId())});
         return entity;
     }
 

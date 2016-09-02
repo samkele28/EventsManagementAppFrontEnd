@@ -1,15 +1,15 @@
-package za.samkele.com.eventsmanagementsystem.domain;
+package za.samkele.com.eventsmanagementsystem.restAPI.event.resources;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Map;
 
 /**
- * Created by Samkele on 4/20/2016.
+ * Created by Samkele on 9/1/2016.
  */
-public class Event implements Serializable{
-    private Long id;
+public class EventResource implements Serializable {
+    //private Long id;
     private String eventId;
     private String eventName;
     private String eventDescription;
@@ -20,12 +20,8 @@ public class Event implements Serializable{
     private double costPerPerson;
     private String emailAddress;
 
-    private Event(){
+    private EventResource(){
 
-    }
-
-    public Long getId(){
-        return id;
     }
 
     public String getEventId() {
@@ -34,6 +30,10 @@ public class Event implements Serializable{
 
     public String getEventName() {
         return eventName;
+    }
+
+    public String getEventDescription() {
+        return eventDescription;
     }
 
     public Map<String, String> getLocation() {
@@ -56,16 +56,11 @@ public class Event implements Serializable{
         return costPerPerson;
     }
 
-    public String getEventDescription() {
-        return eventDescription;
-    }
-
-    public String getEmailAddress(){
+    public String getEmailAddress() {
         return emailAddress;
     }
 
-    private Event(Builder builder){
-        this.id = builder.id;
+    private EventResource(Builder builder){
         this.eventId = builder.eventId;
         this.eventName = builder.eventName;
         this.location = builder.location;
@@ -78,7 +73,6 @@ public class Event implements Serializable{
     }
 
     public static class Builder {
-        private Long id;
         private String eventId;
         private String eventName;
         private Map<String, String> location;
@@ -88,11 +82,6 @@ public class Event implements Serializable{
         private double costPerPerson;
         private String eventDescription;
         private String emailAddress;
-
-        public Builder id(Long value) {
-            this.id = value;
-            return this;
-        }
 
         public Builder eventId(String value) {
             this.eventId = value;
@@ -139,7 +128,7 @@ public class Event implements Serializable{
             return this;
         }
 
-        public Builder copy(Event value) {
+        public Builder copy(EventResource value) {
             this.eventId = value.eventId;
             this.eventName = value.eventName;
             this.location = value.location;
@@ -152,31 +141,9 @@ public class Event implements Serializable{
             return this;
         }
 
-        public Event build() {
-            return new Event (this);
+        public EventResource build() {
+            return new EventResource (this);
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Event event = (Event) o;
-
-        if (!id.equals(event.id)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int hashCode(){
-        return id.hashCode();
     }
 
 }

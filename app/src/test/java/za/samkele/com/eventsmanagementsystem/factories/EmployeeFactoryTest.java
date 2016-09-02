@@ -23,19 +23,19 @@ public class EmployeeFactoryTest {
     @Test
     public void testEmployeeCreate() throws Exception {
         Employee employee = empFactory.createEmployee("Lusindiso", "Besiti", "CPUT600216");
-        //Assert.assertEquals(employee.getEmployeeNumber(), "CPUT600216");
+        Assert.assertEquals(employee.getEmployeeNumber(), "CPUT600216");
         Assert.assertEquals(employee.getLastName(), "Besiti");
-        /*Assert.assertEquals(employee.getFirstName(), "Lusindiso");
-        Assert.assertNotNull(employee.getEmpId());*/
+        Assert.assertEquals(employee.getFirstName(), "Lusindiso");
+        Assert.assertNotNull(employee.getEmpId());
     }
 
     @Test
     public void testEmployeeUpdate() throws Exception {
         Employee employee = empFactory.createEmployee("Lusindiso", "Besiti", "CPUT600216");
-        //Assert.assertEquals(employee.getEmployeeNumber(), "CPUT600216");
+        Assert.assertEquals(employee.getEmployeeNumber(), "CPUT600216");
         Assert.assertEquals(employee.getLastName(), "Besiti");
-        /*Assert.assertEquals(employee.getFirstName(), "Lusindiso");
-        Assert.assertNotNull(employee.getEmpId());*/
+        Assert.assertEquals(employee.getFirstName(), "Lusindiso");
+        Assert.assertNotNull(employee.getEmpId());
 
         //Update LastName
 
@@ -45,9 +45,9 @@ public class EmployeeFactoryTest {
                 .build();
 
         Assert.assertEquals(updateEmployee.getLastName(), "Best");
-        /*Assert.assertEquals(employee.getEmployeeNumber(), updateEmployee.getEmployeeNumber());
+        Assert.assertEquals(employee.getEmployeeNumber(), updateEmployee.getEmployeeNumber());
         Assert.assertEquals(employee.getFirstName(), updateEmployee.getFirstName());
-        Assert.assertEquals(employee.getEmpId(), updateEmployee.getEmpId());*/
+        Assert.assertEquals(employee.getEmpId(), updateEmployee.getEmpId());
     }
 
 }
