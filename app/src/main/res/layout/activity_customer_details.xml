@@ -251,28 +251,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Save"
-                        android:id="@+id/button"
+                        android:id="@+id/bSave"
                         android:textColor="#080808" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Update"
-                        android:id="@+id/button2"
+                        android:id="@+id/bUpdate"
                         android:textColor="#080808" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Delete"
-                        android:id="@+id/button3"
+                        android:id="@+id/bDelete"
                         android:textColor="#080808" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="View"
-                        android:id="@+id/button4"
+                        android:id="@+id/bView"
                         android:textColor="#080808" />
                 </LinearLayout>
 
